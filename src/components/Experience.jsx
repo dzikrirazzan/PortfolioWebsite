@@ -8,7 +8,7 @@ const Experience = () => {
     {
       title: "Bangkit Academy Cohort 2024",
       company: "Google, Tokopedia, Gojek & Traveloka",
-      period: "2024 - Present", 
+      period: "2024 - Present",
       location: "Remote, Indonesia",
       description:
         "Participating in the prestigious Bangkit Academy program as a Mobile Development learning path student. Working on capstone project Si-Bantu with a team of 7 members from different specializations (Mobile Development, Machine Learning, Cloud Computing).",
@@ -36,7 +36,7 @@ const Experience = () => {
         "Specialized in mobile application development and software engineering",
         "Completed advanced courses in data structures, algorithms, and mathematics",
         "Developed multiple Android applications for academic projects",
-        "Participated in programming competitions and technical challenges", 
+        "Participated in programming competitions and technical challenges",
         "Built strong foundation in numerical computing and mathematical modeling",
         "Active contributor to computer science student community",
       ],
@@ -69,7 +69,7 @@ const Experience = () => {
       title: "Android Development Learning Journey",
       company: "Self-Directed & Online Platforms",
       period: "2019 - 2021",
-      location: "Indonesia", 
+      location: "Indonesia",
       description:
         "Intensive self-learning journey in Android development, starting from basic Java programming to advanced Android concepts. Built multiple learning projects and applications to solidify understanding of mobile development principles.",
       achievements: [
@@ -82,7 +82,7 @@ const Experience = () => {
       ],
       technologies: ["Java", "Kotlin", "Android SDK", "SQLite", "Firebase", "XML", "Material Design"],
       type: "education",
-      status: "completed", 
+      status: "completed",
       duration: "2+ years intensive learning",
     },
   ];
@@ -151,7 +151,7 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative mb-12 ${index % 2 === 0 ? "lg:pr-1/2 lg:text-right" : "lg:pl-1/2 lg:ml-8"} ml-16 lg:ml-0 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} transition-all duration-700`}
+                className={`relative mb-12 ${index % 2 === 0 ? "lg:pr-8" : "lg:pl-8"} ml-16 lg:ml-0 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} transition-all duration-700`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 {/* Timeline dot */}
@@ -160,23 +160,29 @@ const Experience = () => {
                 </div>
 
                 <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-                    <div className={index % 2 === 0 ? "lg:text-right" : ""}>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-2">{exp.title}</h3>
-                      <p className="text-lg text-blue-600 font-semibold mb-1">{exp.company}</p>
-                      <div className="flex flex-col lg:flex-row gap-2 text-sm text-gray-500">
-                        <span className="flex items-center">📅 {exp.period}</span>
-                        <span className="flex items-center">📍 {exp.location}</span>
-                        {exp.status && (
-                          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${exp.status === "current" ? "bg-green-100 text-green-700" : exp.status === "ongoing" ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"}`}>
-                            {exp.status === "current" ? "Current" : exp.status === "ongoing" ? "Ongoing" : "Completed"}
-                          </span>
-                        )}
+                  <div className="mb-4">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">{exp.title}</h3>
+                        <p className="text-lg text-blue-600 font-semibold mb-1">{exp.company}</p>
+                        <div className="flex flex-wrap gap-3 text-sm text-gray-500">
+                          <span className="flex items-center">📅 {exp.period}</span>
+                          <span className="flex items-center">📍 {exp.location}</span>
+                        </div>
                       </div>
+                      {exp.status && (
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
+                            exp.status === "current" ? "bg-green-100 text-green-700" : exp.status === "ongoing" ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"
+                          }`}
+                        >
+                          {exp.status === "current" ? "Current" : exp.status === "ongoing" ? "Ongoing" : "Completed"}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-6 leading-relaxed text-justify">{exp.description}</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{exp.description}</p>
 
                   {/* Key Achievements */}
                   <div className="mb-6">
@@ -205,31 +211,36 @@ const Experience = () => {
 
                   {/* Additional Info */}
                   <div className="pt-4 border-t border-gray-100">
-                    <div className="flex flex-wrap justify-between text-sm text-gray-500 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-gray-500">
                       {exp.role && (
-                        <span>
-                          <strong>Role:</strong> {exp.role}
-                        </span>
+                        <div className="flex items-center space-x-2">
+                          <span className="font-medium text-gray-700">Role:</span>
+                          <span>{exp.role}</span>
+                        </div>
                       )}
                       {exp.teamSize && (
-                        <span>
-                          <strong>Team Size:</strong> {exp.teamSize} members
-                        </span>
+                        <div className="flex items-center space-x-2">
+                          <span className="font-medium text-gray-700">Team:</span>
+                          <span>{exp.teamSize} members</span>
+                        </div>
                       )}
                       {exp.gpa && (
-                        <span>
-                          <strong>GPA:</strong> {exp.gpa}
-                        </span>
+                        <div className="flex items-center space-x-2">
+                          <span className="font-medium text-gray-700">GPA:</span>
+                          <span>{exp.gpa}</span>
+                        </div>
                       )}
                       {exp.projects && (
-                        <span>
-                          <strong>Projects:</strong> {exp.projects}
-                        </span>
+                        <div className="flex items-center space-x-2">
+                          <span className="font-medium text-gray-700">Projects:</span>
+                          <span>{exp.projects}</span>
+                        </div>
                       )}
                       {exp.duration && (
-                        <span>
-                          <strong>Duration:</strong> {exp.duration}
-                        </span>
+                        <div className="flex items-center space-x-2">
+                          <span className="font-medium text-gray-700">Duration:</span>
+                          <span>{exp.duration}</span>
+                        </div>
                       )}
                     </div>
                   </div>
