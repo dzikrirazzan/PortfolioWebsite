@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://dzikrirazzan.me/sitemap.xml
+
+# Disallow common non-content paths
+Disallow: /build/
+Disallow: /src/
+Disallow: /*.json
+Disallow: /*.map
