@@ -94,7 +94,7 @@ const Experience = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "50px" }
     );
 
     if (experienceRef.current) {
@@ -124,56 +124,60 @@ const Experience = () => {
   const getTypeColor = (type) => {
     switch (type) {
       case "project":
-        return "from-blue-500 to-cyan-500";
+        return "from-blue-500 to-blue-600";
       case "education":
-        return "from-green-500 to-teal-500";
+        return "from-blue-400 to-blue-600";
       case "experience":
-        return "from-purple-500 to-pink-500";
+        return "from-blue-600 to-blue-700";
       default:
-        return "from-gray-500 to-gray-600";
+        return "from-blue-500 to-blue-600";
     }
   };
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50" ref={experienceRef}>
+    <section id="experience" className="py-12 sm:py-20 bg-slate-900" ref={experienceRef}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Experience & Education</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">My journey in software development, from academic learning to professional projects</p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-100 mb-4">Experience & Education</h2>
+          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto">My journey in software development, from academic learning to professional projects</p>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mt-4 rounded-full"></div>
         </div>
 
         <div className="max-w-6xl mx-auto">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+            <div className="absolute left-6 sm:left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
 
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative mb-12 ${index % 2 === 0 ? "lg:pr-8" : "lg:pl-8"} ml-16 lg:ml-0 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} transition-all duration-700`}
+                className={`relative mb-8 sm:mb-12 ${index % 2 === 0 ? "lg:pr-8" : "lg:pl-8"} ml-12 sm:ml-16 lg:ml-0 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} transition-all duration-700`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 {/* Timeline dot */}
-                <div className={`absolute -left-10 lg:left-1/2 lg:transform lg:-translate-x-1/2 top-8 w-6 h-6 bg-gradient-to-r ${getTypeColor(exp.type)} rounded-full border-4 border-white shadow-lg flex items-center justify-center`}>
+                <div
+                  className={`absolute -left-8 sm:-left-10 lg:left-1/2 lg:transform lg:-translate-x-1/2 top-6 sm:top-8 w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r ${getTypeColor(
+                    exp.type
+                  )} rounded-full border-3 sm:border-4 border-slate-900 shadow-lg flex items-center justify-center`}
+                >
                   <span className="text-xs">{getTypeIcon(exp.type)}</span>
                 </div>
 
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                <div className="bg-slate-800 p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-700">
                   <div className="mb-4">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">{exp.title}</h3>
-                        <p className="text-lg text-blue-600 font-semibold mb-1">{exp.company}</p>
-                        <div className="flex flex-wrap gap-3 text-sm text-gray-500">
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-100 mb-2">{exp.title}</h3>
+                        <p className="text-base sm:text-lg text-blue-400 font-semibold mb-1">{exp.company}</p>
+                        <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-slate-400">
                           <span className="flex items-center">📅 {exp.period}</span>
                           <span className="flex items-center">📍 {exp.location}</span>
                         </div>
                       </div>
                       {exp.status && (
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
-                            exp.status === "current" ? "bg-green-100 text-green-700" : exp.status === "ongoing" ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"
+                          className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
+                            exp.status === "current" ? "bg-blue-900 text-blue-300" : exp.status === "ongoing" ? "bg-blue-800 text-blue-200" : "bg-slate-700 text-slate-300"
                           }`}
                         >
                           {exp.status === "current" ? "Current" : exp.status === "ongoing" ? "Ongoing" : "Completed"}
@@ -182,27 +186,27 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-6 leading-relaxed">{exp.description}</p>
+                  <p className="text-slate-300 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{exp.description}</p>
 
                   {/* Key Achievements */}
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Key Achievements</h4>
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-base sm:text-lg font-semibold text-slate-100 mb-3">Key Achievements</h4>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, idx) => (
                         <li key={idx} className="flex items-start">
-                          <span className="text-blue-500 mr-2 mt-1">▸</span>
-                          <span className="text-gray-600 text-sm">{achievement}</span>
+                          <span className="text-blue-400 mr-2 mt-1 flex-shrink-0">▸</span>
+                          <span className="text-slate-300 text-xs sm:text-sm">{achievement}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Technologies */}
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Technologies & Skills</h4>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-base sm:text-lg font-semibold text-slate-100 mb-3">Technologies & Skills</h4>
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {exp.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className={`bg-gradient-to-r ${getTypeColor(exp.type)} text-white text-xs px-3 py-1 rounded-full font-medium`}>
+                        <span key={techIndex} className={`bg-gradient-to-r ${getTypeColor(exp.type)} text-white text-xs px-2 sm:px-3 py-1 rounded-full font-medium`}>
                           {tech}
                         </span>
                       ))}
@@ -210,35 +214,35 @@ const Experience = () => {
                   </div>
 
                   {/* Additional Info */}
-                  <div className="pt-4 border-t border-gray-100">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-gray-500">
+                  <div className="pt-4 border-t border-slate-700">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 text-xs sm:text-sm text-slate-400">
                       {exp.role && (
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-gray-700">Role:</span>
+                          <span className="font-medium text-slate-300">Role:</span>
                           <span>{exp.role}</span>
                         </div>
                       )}
                       {exp.teamSize && (
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-gray-700">Team:</span>
+                          <span className="font-medium text-slate-300">Team:</span>
                           <span>{exp.teamSize} members</span>
                         </div>
                       )}
                       {exp.gpa && (
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-gray-700">GPA:</span>
+                          <span className="font-medium text-slate-300">GPA:</span>
                           <span>{exp.gpa}</span>
                         </div>
                       )}
                       {exp.projects && (
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-gray-700">Projects:</span>
+                          <span className="font-medium text-slate-300">Projects:</span>
                           <span>{exp.projects}</span>
                         </div>
                       )}
                       {exp.duration && (
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-gray-700">Duration:</span>
+                          <span className="font-medium text-slate-300">Duration:</span>
                           <span>{exp.duration}</span>
                         </div>
                       )}
@@ -251,25 +255,25 @@ const Experience = () => {
         </div>
 
         {/* Summary Stats */}
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Experience Summary</h3>
-            <div className="grid md:grid-cols-4 gap-6">
+        <div className="mt-12 sm:mt-16 text-center">
+          <div className="bg-slate-800 rounded-2xl shadow-lg p-6 sm:p-8 max-w-4xl mx-auto border border-slate-700">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-100 mb-4 sm:mb-6">Experience Summary</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">5+</div>
-                <div className="text-gray-600">Years Experience</div>
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-2">5+</div>
+                <div className="text-slate-300 text-xs sm:text-base">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">37+</div>
-                <div className="text-gray-600">Projects Completed</div>
+                <div className="text-2xl sm:text-3xl font-bold text-blue-500 mb-2">37+</div>
+                <div className="text-slate-300 text-xs sm:text-base">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">15+</div>
-                <div className="text-gray-600">Android Apps</div>
+                <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-2">15+</div>
+                <div className="text-slate-300 text-xs sm:text-base">Android Apps</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600 mb-2">7</div>
-                <div className="text-gray-600">Team Collaborations</div>
+                <div className="text-2xl sm:text-3xl font-bold text-blue-700 mb-2">7</div>
+                <div className="text-slate-300 text-xs sm:text-base">Team Collaborations</div>
               </div>
             </div>
           </div>

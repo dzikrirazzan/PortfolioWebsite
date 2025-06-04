@@ -64,7 +64,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+    <footer className="relative bg-slate-900 text-white">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -77,57 +77,57 @@ const Footer = () => {
 
       <div className="relative">
         {/* Main Footer Content */}
-        <div className="container mx-auto px-4 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
+        <div className="container mx-auto px-4 lg:px-8 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-2">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">DR</span>
+              <div className="flex items-center space-x-3 mb-4 sm:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-base sm:text-lg">DR</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Dzikri Razzan</h3>
-                  <p className="text-gray-400 text-sm">Android Developer & Software Engineer</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-400">Dzikri Razzan</h3>
+                  <p className="text-slate-400 text-xs sm:text-sm">Android Developer & Software Engineer</p>
                 </div>
               </div>
 
-              <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
+              <p className="text-slate-300 leading-relaxed mb-4 sm:mb-6 max-w-md text-sm sm:text-base">
                 Passionate about creating innovative mobile applications and elegant software solutions. Always excited to tackle new challenges and collaborate on meaningful projects.
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="text-center p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-blue-400">37+</div>
-                  <div className="text-xs text-gray-400">Projects</div>
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6 sm:mb-8">
+                <div className="text-center p-2 sm:p-4 bg-slate-800/50 border border-slate-700 rounded-xl backdrop-blur-sm">
+                  <div className="text-lg sm:text-2xl font-bold text-blue-400">37+</div>
+                  <div className="text-xs text-slate-400">Projects</div>
                 </div>
-                <div className="text-center p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-purple-400">5+</div>
-                  <div className="text-xs text-gray-400">Years</div>
+                <div className="text-center p-2 sm:p-4 bg-slate-800/50 border border-slate-700 rounded-xl backdrop-blur-sm">
+                  <div className="text-lg sm:text-2xl font-bold text-blue-400">5+</div>
+                  <div className="text-xs text-slate-400">Years</div>
                 </div>
-                <div className="text-center p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-green-400">100%</div>
-                  <div className="text-xs text-gray-400">Passion</div>
+                <div className="text-center p-2 sm:p-4 bg-slate-800/50 border border-slate-700 rounded-xl backdrop-blur-sm">
+                  <div className="text-lg sm:text-2xl font-bold text-blue-400">100%</div>
+                  <div className="text-xs text-slate-400">Passion</div>
                 </div>
               </div>
 
               {/* Social Links */}
               <div>
-                <h4 className="text-lg font-semibold mb-4 flex items-center">
-                  <span className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></span>
+                <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
+                  <span className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 rounded-full mr-2 sm:mr-3"></span>
                   Let's Connect
                 </h4>
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-2 sm:gap-4">
                   {socialLinks.map((link) => (
                     <a
                       key={link.name}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 bg-gray-800/50 rounded-xl text-gray-400 ${link.color} transform hover:scale-110 transition-all duration-300 backdrop-blur-sm`}
+                      className={`p-2 sm:p-3 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-400 hover:text-white transform hover:scale-110 transition-all duration-300 backdrop-blur-sm`}
                       aria-label={link.name}
                     >
-                      {link.icon}
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">{link.icon}</div>
                     </a>
                   ))}
                 </div>
@@ -136,13 +136,13 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-6 flex items-center">
-                <span className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></span>
+              <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 flex items-center">
+                <span className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 rounded-full mr-2 sm:mr-3"></span>
                 Quick Links
               </h4>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {quickLinks.map((link) => (
-                  <button key={link.name} onClick={() => scrollToSection(link.href.slice(1))} className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 py-1">
+                  <button key={link.name} onClick={() => scrollToSection(link.href.slice(1))} className="block text-slate-300 hover:text-white hover:translate-x-2 transition-all duration-300 py-1 text-sm sm:text-base">
                     {link.name}
                   </button>
                 ))}
@@ -151,13 +151,13 @@ const Footer = () => {
 
             {/* Services */}
             <div>
-              <h4 className="text-lg font-semibold mb-6 flex items-center">
-                <span className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></span>
+              <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 flex items-center">
+                <span className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 rounded-full mr-2 sm:mr-3"></span>
                 Services
               </h4>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {services.map((service) => (
-                  <div key={service} className="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 py-1 cursor-pointer">
+                  <div key={service} className="text-slate-300 hover:text-white hover:translate-x-2 transition-all duration-300 py-1 cursor-pointer text-sm sm:text-base">
                     {service}
                   </div>
                 ))}
@@ -167,15 +167,15 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700/50 backdrop-blur-sm">
-          <div className="container mx-auto px-4 lg:px-8 py-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-gray-400 text-sm">© {currentYear} Dzikri Razzan. All rights reserved.</div>
+        <div className="border-t border-slate-700/50 backdrop-blur-sm">
+          <div className="container mx-auto px-4 lg:px-8 py-6 sm:py-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
+              <div className="text-slate-400 text-xs sm:text-sm">© {currentYear} Dzikri Razzan. All rights reserved.</div>
 
-              <div className="flex items-center space-x-6 text-sm text-gray-400">
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm text-slate-400">
                 <span>Made with ❤️ using React & Tailwind CSS</span>
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
                   <span>Available for work</span>
                 </div>
               </div>
