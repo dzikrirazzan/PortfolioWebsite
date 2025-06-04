@@ -125,24 +125,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Stats Section */}
-          <div className="mb-16 sm:mb-20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className={`text-center bg-slate-800 border border-slate-700 p-4 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-2 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
-                  style={{ transitionDelay: `${index * 100 + 600}ms` }}
-                >
-                  <div className="text-2xl sm:text-4xl mb-2 sm:mb-4">{stat.icon}</div>
-                  <div className="text-2xl sm:text-3xl font-bold text-slate-100 mb-1 sm:mb-2">{stat.number}</div>
-                  <div className="text-slate-400 text-xs sm:text-base">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          
 
           {/* Interests & Specializations */}
           <div>

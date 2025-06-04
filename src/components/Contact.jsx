@@ -57,7 +57,7 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="pt-32 pb-20 bg-slate-900 relative overflow-hidden">
+    <section ref={sectionRef} id="contact" className="pt-16 pb-20 bg-slate-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>

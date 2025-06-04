@@ -135,7 +135,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-12 sm:py-20 bg-slate-900" ref={experienceRef}>
+    <section id="experience" className="py-12 sm:py-16 bg-slate-900" ref={experienceRef}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-100 mb-4">Experience & Education</h2>
@@ -253,8 +253,6 @@ const Experience = () => {
             ))}
           </div>
         </div>
-
-      
       </div>
     </section>
   );
