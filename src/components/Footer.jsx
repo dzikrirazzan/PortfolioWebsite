@@ -54,7 +54,7 @@ const Footer = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const services = ["Android Development", "Mobile App Design", "API Development", "Database Design", "Code Review", "Technical Consulting"];
+  const services = ["Android Development", "Web Development", "API Development", "Database Design", "Code Review", "Technical Consulting"];
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -87,7 +87,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-blue-400">Dzikri Razzan</h3>
-                  <p className="text-slate-400 text-xs sm:text-sm">Android Developer & Software Engineer</p>
+                  <p className="text-slate-400 text-xs sm:text-sm">Software Engineer</p>
                 </div>
               </div>
 

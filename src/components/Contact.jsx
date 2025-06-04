@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { EMAIL_CONFIG } from "../config/emailConfig";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,15 +43,29 @@ const Contact = () => {
     setSubmitStatus("");
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Get current time in readable format
+      const currentTime = new Date().toLocaleString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Asia/Jakarta",
+      });
 
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", formData);
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        time: currentTime,
+      };
+
+      await emailjs.send(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, templateParams, EMAIL_CONFIG.PUBLIC_KEY);
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      console.error("EmailJS error:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
