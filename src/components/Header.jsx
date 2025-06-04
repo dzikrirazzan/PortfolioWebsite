@@ -64,7 +64,7 @@ const Header = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold text-slate-100">Dzikri Razzan</h1>
-              <p className="text-xs text-slate-400 hidden sm:block">Android Developer & Software Engineer</p>
+              <p className="text-xs text-slate-400 hidden sm:block">Software Engineer</p>
             </div>
           </div>
 
@@ -84,12 +84,7 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex lg:hidden xl:flex items-center space-x-4">
-            <button onClick={() => scrollToSection("contact")} className="px-6 py-2 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
-              Hire Me
-            </button>
-          </div>
+         
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">

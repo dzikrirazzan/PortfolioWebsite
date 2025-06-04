@@ -104,8 +104,8 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-slate-100 text-lg">Email</h4>
-                        <a href="mailto:dzikrirazzan@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
-                          dzikrirazzan@gmail.com
+                        <a href="mailto:dzikrirazzan02@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
+                          dzikrirazzan02@gmail.com
                         </a>
                       </div>
                     </div>
@@ -119,7 +119,7 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold text-slate-100 text-lg">LinkedIn</h4>
                         <a href="https://www.linkedin.com/in/dzikrirazzan/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
-                          /in/dzikrirazzan
+                          dzikrirazzan
                         </a>
                       </div>
                     </div>
@@ -133,7 +133,7 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold text-slate-100 text-lg">GitHub</h4>
                         <a href="https://github.com/dzikrirazzan" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
-                          /dzikrirazzan
+                          dzikrirazzan
                         </a>
                       </div>
                     </div>

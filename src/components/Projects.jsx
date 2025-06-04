@@ -232,30 +232,7 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-12 sm:mt-16 text-center">
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-100 mb-4 sm:mb-6">Project Statistics</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 sm:mb-2">37+</div>
-                <div className="text-slate-400 text-xs sm:text-base">Total Repositories</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 sm:mb-2">{projects.length}</div>
-                <div className="text-slate-400 text-xs sm:text-base">Featured Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 sm:mb-2">85%</div>
-                <div className="text-slate-400 text-xs sm:text-base">ML Model Accuracy</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 sm:mb-2">7</div>
-                <div className="text-slate-400 text-xs sm:text-base">Team Collaboration</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </section>
   );

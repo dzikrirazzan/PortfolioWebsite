@@ -28,12 +28,6 @@ const About = () => {
     };
   }, []);
 
-  const stats = [
-    { number: "37+", label: "GitHub Repositories", icon: "📚" },
-    { number: "5+", label: "Years Experience", icon: "⏱️" },
-    { number: "15+", label: "Android Apps", icon: "📱" },
-    { number: "85%", label: "ML Model Accuracy", icon: "🤖" },
-  ];
 
   const interests = [
     { icon: "🚀", title: "Mobile Development", description: "Passionate about creating intuitive Android applications" },
@@ -50,7 +44,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-100 mb-4">About Me</h2>
-            <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto">Passionate software engineer specializing in mobile development and emerging technologies</p>
+            <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto">Passionate software engineer specializing in mobile/web development and emerging technologies</p>
             <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
           </div>
 
@@ -63,7 +57,7 @@ const About = () => {
                       <div className="text-7xl sm:text-9xl mb-4 sm:mb-6">👨‍💻</div>
                       <div>
                         <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-100 mb-2">Dzikri Razzan Athallah</h3>
-                        <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">Mobile Developer & Software Engineer</p>
+                        <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">Mobile/Web Developer & Software Engineer</p>
                       </div>
                       <div className="pt-4">
                         <div className="flex justify-center space-x-4 text-2xl sm:text-3xl">
@@ -86,8 +80,7 @@ const About = () => {
 
               <div className="space-y-4 sm:space-y-5 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed">
                 <p>
-                  I'm a passionate <strong className="text-slate-100">Computer Engineering student</strong> at Diponegoro University with a deep love for mobile application development and emerging technologies. Currently based in Jakarta,
-                  Indonesia, I specialize in creating innovative Android applications that solve real-world problems.
+                I'm a dedicated <strong className="text-slate-100">Computer Engineering student</strong> at Diponegoro University with a strong focus on backend development for web and mobile applications. Based in Semarang, Indonesia, I specialize in building robust APIs, scalable server-side systems, and seamless integrations for real-world solutions.
                 </p>
 
                 <p>
@@ -100,10 +93,7 @@ const About = () => {
                   development, web applications, data science, and machine learning. I'm particularly passionate about integrating cutting-edge technologies like ML and AI into mobile applications.
                 </p>
 
-                <p className="hidden sm:block">
-                  When I'm not coding, you'll find me exploring new frameworks, contributing to open-source projects, mentoring fellow developers, or experimenting with the latest in mobile UI/UX design. I believe in continuous learning and
-                  staying ahead of technology trends.
-                </p>
+               
               </div>
 
               <div className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8">

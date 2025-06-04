@@ -36,7 +36,7 @@ const Footer = () => {
     },
     {
       name: "Email",
-      url: "mailto:dzikrirazzan03@gmail.com",
+      url: "mailto:dzikrirazzan02@gmail.com",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.903.732-1.636 1.636-1.636h.909L12 11.71l9.455-7.889h.909c.904 0 1.636.733 1.636 1.636z" />

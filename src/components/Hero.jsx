@@ -4,7 +4,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentRole, setCurrentRole] = useState(0);
 
-  const roles = ["Android Developer", "Software Engineer", "Mobile App Creator", "ML Enthusiast", "Full-Stack Developer", "Problem Solver"];
+  const roles = ["Android Developer", "Software Engineer", "Front-End Developer", "Back-End Developer", "Full-Stack Developer"];
 
   useEffect(() => {
     setIsVisible(true);
@@ -63,7 +63,7 @@ const Hero = () => {
             </div>
 
             <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
-              Passionate Computer Engineering student at <span className="font-semibold text-blue-400">Diponegoro University</span>, specializing in mobile development and AI integration. Currently building innovative solutions as part of{" "}
+              Passionate Computer Engineering student at <span className="font-semibold text-blue-400">Diponegoro University</span>, specializing in mobile and web development. Currently building innovative solutions as part of{" "}
               <span className="font-semibold text-blue-400">Bangkit Academy 2024</span> with
               <span className="font-semibold text-blue-400"> 37+ GitHub repositories</span> and counting.
             </p>
@@ -111,8 +111,8 @@ const Hero = () => {
               <div className="text-slate-400 text-xs sm:text-sm font-medium">Android Apps</div>
             </div>
             <div className="group bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 sm:p-6 hover:bg-slate-800 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/10">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">85%</div>
-              <div className="text-slate-400 text-xs sm:text-sm font-medium">ML Accuracy</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">5+</div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium">Web Application</div>
             </div>
           </div>
 
@@ -139,7 +139,7 @@ const Hero = () => {
               </svg>
             </a>
             <a
-              href="mailto:dzikrirazzan@gmail.com"
+              href="mailto:dzikrirazzan02@gmail.com"
               className="group bg-slate-800/60 backdrop-blur-sm border border-slate-700 p-3 sm:p-4 rounded-2xl text-slate-400 hover:text-white hover:bg-blue-600 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
             >
               <svg className="w-6 h-6 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">

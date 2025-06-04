@@ -254,30 +254,7 @@ const Experience = () => {
           </div>
         </div>
 
-        {/* Summary Stats */}
-        <div className="mt-12 sm:mt-16 text-center">
-          <div className="bg-slate-800 rounded-2xl shadow-lg p-6 sm:p-8 max-w-4xl mx-auto border border-slate-700">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-100 mb-4 sm:mb-6">Experience Summary</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-2">5+</div>
-                <div className="text-slate-300 text-xs sm:text-base">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-500 mb-2">37+</div>
-                <div className="text-slate-300 text-xs sm:text-base">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-2">15+</div>
-                <div className="text-slate-300 text-xs sm:text-base">Android Apps</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-700 mb-2">7</div>
-                <div className="text-slate-300 text-xs sm:text-base">Team Collaborations</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </section>
   );
