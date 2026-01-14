@@ -8,11 +8,11 @@ const Hero = () => {
   }, []);
 
   const photos = [
-    "/photos/team-undip-new.jpg",
-    "/photos/team-photo-1.jpg",
-    "/photos/award-photo.jpg",
-    "/photos/tekkom-building.jpg",
-    "/photos/team-campus.jpg",
+    { src: "/photos/team-undip-new.jpg", alt: "Dzikri Razzan with Team Undip" },
+    { src: "/photos/team-photo-1.jpg", alt: "Dzikri Razzan Team Activity" },
+    { src: "/photos/award-photo.jpg", alt: "Dzikri Razzan Platinum Award VIIIC 2025" },
+    { src: "/photos/tekkom-building.jpg", alt: "Computer Engineering Building Diponegoro University" },
+    { src: "/photos/team-campus.jpg", alt: "Dzikri Razzan Team Discussion" },
   ];
 
   return (
@@ -27,8 +27,9 @@ const Hero = () => {
           {photos.map((photo, index) => (
             <div key={index} className="relative overflow-hidden">
               <img
-                src={photo}
-                alt=""
+                src={photo.src}
+                alt={photo.alt}
+                title={photo.alt}
                 className="w-full h-full object-cover"
                 style={{ 
                   filter: "grayscale(100%)",

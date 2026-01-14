@@ -38,7 +38,8 @@ const About = () => {
           >
             <img
               src="/photos/dzikri-solo.jpg"
-              alt="Dzikri Razzan"
+              alt="Dzikri Razzan Athallah - Software Engineer Portrait"
+              title="Dzikri Razzan Athallah"
               className="w-full h-auto object-cover"
               style={{ filter: "brightness(0.95)" }}
             />
