@@ -33,7 +33,7 @@ const Header = () => {
         backdropFilter: isScrolled ? "blur(10px)" : "none",
       }}
     >
-      <nav className="max-w-5xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <nav className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center w-full">
         {/* Logo */}
         <a
           href="#hero"
@@ -64,26 +64,29 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden"
+          className="md:hidden text-sm font-medium"
           style={{ color: "var(--text-white)" }}
         >
           {isMenuOpen ? "Close" : "Menu"}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 z-40 pt-20 px-6"
-          style={{ backgroundColor: "rgba(26, 26, 26, 0.98)" }}
+          className="md:hidden absolute top-full left-0 right-0 border-t"
+          style={{ 
+            backgroundColor: "#1a1a1a",
+            borderColor: "#404040"
+          }}
         >
-          <div className="flex flex-col gap-6">
+          <div className="px-6 py-4 flex flex-col gap-4">
             {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-2xl text-left"
-                style={{ color: "var(--text-white)" }}
+                className="text-base text-left py-2"
+                style={{ color: "#a3a3a3" }}
               >
                 {item}
               </button>

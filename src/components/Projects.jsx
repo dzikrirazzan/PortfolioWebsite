@@ -96,21 +96,36 @@ const Projects = () => {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div
-                className="grid grid-cols-12 gap-4 py-6 border-b items-center"
+                className="flex flex-col md:grid md:grid-cols-12 gap-2 md:gap-4 py-6 border-b md:items-center"
                 style={{ borderColor: "var(--border)" }}
               >
-                {/* Title - Left */}
-                <div className="col-span-4">
+                {/* Title */}
+                <div className="md:col-span-4 flex items-center justify-between md:justify-start">
                   <h3
-                    className="text-xl font-medium group-hover:text-amber-500 transition-colors"
+                    className="text-lg md:text-xl font-medium group-hover:text-amber-500 transition-colors"
                     style={{ color: "var(--text-white)" }}
                   >
                     {project.title}
                   </h3>
+                  {/* Arrow - visible only on mobile, inline with title */}
+                  <svg
+                    className="w-5 h-5 md:hidden transform group-hover:translate-x-1 transition-transform"
+                    style={{ color: "var(--text-muted)" }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
                 </div>
 
-                {/* Description - Center */}
-                <div className="col-span-7">
+                {/* Description */}
+                <div className="md:col-span-7">
                   <p
                     className="text-sm"
                     style={{ color: "var(--text-muted)" }}
@@ -119,8 +134,8 @@ const Projects = () => {
                   </p>
                 </div>
 
-                {/* Arrow - Right */}
-                <div className="col-span-1 flex justify-end">
+                {/* Arrow - Desktop only */}
+                <div className="hidden md:flex md:col-span-1 justify-end">
                   <svg
                     className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
                     style={{ color: "var(--text-muted)" }}
