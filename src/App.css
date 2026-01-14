@@ -151,9 +151,9 @@ a:hover {
   border-color: var(--text-muted);
 }
 
-/* Scrollbar */
+/* Scrollbar - minimal dark */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -161,7 +161,18 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-light);
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-dark);
 }
 
 ::selection {
