@@ -23,7 +23,7 @@ const Hero = () => {
     >
       {/* Photo Collage Background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="h-full grid grid-cols-3 md:grid-cols-5 gap-1">
+        <div className="h-full grid grid-cols-5 gap-1">
           {photos.map((photo, index) => (
             <div key={index} className="relative overflow-hidden">
               <img
