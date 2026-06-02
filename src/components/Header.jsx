@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
 
-const Header = () => {
+const Header = ({ currentPath = "/", onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
+  const navigateToSection = (sectionId) => {
+    if (currentPath !== "/") {
+      onNavigate("/", sectionId);
+      setIsMenuOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false);
+  };
+
+  const navigateToPage = (path) => {
+    onNavigate(path);
     setIsMenuOpen(false);
   };
 
@@ -21,7 +32,18 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["About", "Projects", "Experience", "Contact"];
+  const navItems = [
+    { label: "About", type: "section", id: "about", href: "/#about" },
+    { label: "Projects", type: "section", id: "projects", href: "/#projects" },
+    { label: "Experience", type: "section", id: "experience", href: "/#experience" },
+    { label: "Certifications", type: "page", path: "/certifications", href: "/certifications" },
+    { label: "Thoughts", type: "page", path: "/thoughts", href: "/thoughts" },
+    { label: "Contact", type: "section", id: "contact", href: "/#contact" },
+  ];
+
+  const isActivePage = (item) =>
+    item.type === "page" &&
+    (currentPath === item.path || (item.path === "/thoughts" && currentPath.startsWith("/thoughts/")));
 
   return (
     <header
@@ -36,10 +58,10 @@ const Header = () => {
       <nav className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center w-full">
         {/* Logo */}
         <a
-          href="#hero"
+          href="/#hero"
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection("hero");
+            navigateToSection("hero");
           }}
           className="text-lg font-medium"
           style={{ color: "var(--text-white)" }}
@@ -50,14 +72,20 @@ const Header = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-              className="text-sm hover:opacity-70 transition-opacity"
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={(event) => {
+                event.preventDefault();
+                item.type === "page" ? navigateToPage(item.path) : navigateToSection(item.id);
+              }}
+              className={`nav-link text-sm transition-opacity ${
+                isActivePage(item) ? "is-active" : ""
+              }`}
               style={{ color: "var(--text-gray)" }}
             >
-              {item}
-            </button>
+              {item.label}
+            </a>
           ))}
         </div>
 
@@ -82,14 +110,18 @@ const Header = () => {
         >
           <div className="px-6 py-4 flex flex-col gap-4">
             {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-base text-left py-2"
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  item.type === "page" ? navigateToPage(item.path) : navigateToSection(item.id);
+                }}
+                className={`nav-link text-base text-left py-2 ${isActivePage(item) ? "is-active" : ""}`}
                 style={{ color: "#a3a3a3" }}
               >
-                {item}
-              </button>
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
