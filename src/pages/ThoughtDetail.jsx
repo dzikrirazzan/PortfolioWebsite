@@ -65,8 +65,8 @@ const ThoughtDetail = ({ slug, navigate }) => {
         </header>
 
         <div className="article-body">
-          {thought.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+          {thought.content.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
         </div>
       </article>

@@ -31,10 +31,12 @@ const Hero = () => {
                 alt={photo.alt}
                 title={photo.alt}
                 className="w-full h-full object-cover"
-                style={{ 
+                style={{
                   filter: "grayscale(100%)",
-                  transform: index % 2 === 0 ? "scale(1.1)" : "scale(1)" 
+                  transform: index % 2 === 0 ? "scale(1.1)" : "scale(1)"
                 }}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}

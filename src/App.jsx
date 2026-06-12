@@ -77,8 +77,17 @@ function App() {
 
   return (
     <div className="App">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only"
+        style={{ position: "absolute", top: 0, left: 0, background: "var(--accent)", padding: "8px 16px", zIndex: 9999 }}
+      >
+        Skip to main content
+      </a>
       <Header currentPath={location.pathname} onNavigate={navigate} />
-      {currentPage}
+      <main id="main-content">
+        {currentPage}
+      </main>
       <Footer />
     </div>
   );

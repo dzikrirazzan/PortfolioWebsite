@@ -94,6 +94,8 @@ const Header = ({ currentPath = "/", onNavigate }) => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden text-sm font-medium"
           style={{ color: "var(--text-white)" }}
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? "Close" : "Menu"}
         </button>

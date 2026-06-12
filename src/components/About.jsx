@@ -42,6 +42,8 @@ const About = () => {
               title="Dzikri Razzan Athallah"
               className="w-full h-auto object-cover"
               style={{ filter: "brightness(0.95)" }}
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
