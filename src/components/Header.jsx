@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from "react";
+import useScrollSpy from "../hooks/useScrollSpy";
+import { scrollBehavior } from "../utils/motion";
 
-const Header = ({ currentPath = "/", onNavigate }) => {
+const NAV_ITEMS = [
+  { label: "About", type: "section", id: "about", href: "/#about" },
+  { label: "Projects", type: "section", id: "projects", href: "/#projects" },
+  { label: "Experience", type: "section", id: "experience", href: "/#experience" },
+  { label: "Certifications", type: "page", path: "/certifications", href: "/certifications" },
+  { label: "Thoughts", type: "page", path: "/thoughts", href: "/thoughts" },
+  { label: "Now", type: "page", path: "/now", href: "/now" },
+  { label: "Reading", type: "page", path: "/reading", href: "/reading" },
+  { label: "Contact", type: "section", id: "contact", href: "/#contact" },
+];
+
+const SECTION_IDS = NAV_ITEMS.filter((item) => item.type === "section").map((item) => item.id);
+
+const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const isHome = currentPath === "/";
+  const activeSection = useScrollSpy(SECTION_IDS, { enabled: isHome });
+
   const navigateToSection = (sectionId) => {
-    if (currentPath !== "/") {
+    if (!isHome) {
       onNavigate("/", sectionId);
       setIsMenuOpen(false);
       return;
@@ -13,7 +31,7 @@ const Header = ({ currentPath = "/", onNavigate }) => {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: scrollBehavior() });
     }
     setIsMenuOpen(false);
   };
@@ -32,25 +50,32 @@ const Header = ({ currentPath = "/", onNavigate }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { label: "About", type: "section", id: "about", href: "/#about" },
-    { label: "Projects", type: "section", id: "projects", href: "/#projects" },
-    { label: "Experience", type: "section", id: "experience", href: "/#experience" },
-    { label: "Certifications", type: "page", path: "/certifications", href: "/certifications" },
-    { label: "Thoughts", type: "page", path: "/thoughts", href: "/thoughts" },
-    { label: "Contact", type: "section", id: "contact", href: "/#contact" },
-  ];
+  const isActive = (item) => {
+    if (item.type === "page") {
+      return (
+        currentPath === item.path ||
+        (item.path === "/thoughts" && currentPath.startsWith("/thoughts/"))
+      );
+    }
+    return isHome && activeSection === item.id;
+  };
 
-  const isActivePage = (item) =>
-    item.type === "page" &&
-    (currentPath === item.path || (item.path === "/thoughts" && currentPath.startsWith("/thoughts/")));
+  const handleNavClick = (event, item) => {
+    event.preventDefault();
+    if (item.type === "page") {
+      navigateToPage(item.path);
+    } else {
+      navigateToSection(item.id);
+    }
+  };
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled ? "py-4" : "py-6"
       }`}
       style={{
+        top: bannerOffset,
         backgroundColor: isScrolled ? "rgba(26, 26, 26, 0.95)" : "transparent",
         backdropFilter: isScrolled ? "blur(10px)" : "none",
       }}
@@ -70,19 +95,15 @@ const Header = ({ currentPath = "/", onNavigate }) => {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+        <div className="hidden lg:flex items-center gap-6">
+          {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              onClick={(event) => {
-                event.preventDefault();
-                item.type === "page" ? navigateToPage(item.path) : navigateToSection(item.id);
-              }}
-              className={`nav-link text-sm transition-opacity ${
-                isActivePage(item) ? "is-active" : ""
-              }`}
+              onClick={(event) => handleNavClick(event, item)}
+              className={`nav-link text-sm transition-opacity ${isActive(item) ? "is-active" : ""}`}
               style={{ color: "var(--text-gray)" }}
+              aria-current={isActive(item) ? "page" : undefined}
             >
               {item.label}
             </a>
@@ -92,7 +113,7 @@ const Header = ({ currentPath = "/", onNavigate }) => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-sm font-medium"
+          className="lg:hidden text-sm font-medium"
           style={{ color: "var(--text-white)" }}
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
@@ -104,23 +125,21 @@ const Header = ({ currentPath = "/", onNavigate }) => {
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
         <div
-          className="md:hidden absolute top-full left-0 right-0 border-t"
-          style={{ 
+          className="lg:hidden absolute top-full left-0 right-0 border-t"
+          style={{
             backgroundColor: "#1a1a1a",
-            borderColor: "#404040"
+            borderColor: "#404040",
           }}
         >
           <div className="px-6 py-4 flex flex-col gap-4">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                onClick={(event) => {
-                  event.preventDefault();
-                  item.type === "page" ? navigateToPage(item.path) : navigateToSection(item.id);
-                }}
-                className={`nav-link text-base text-left py-2 ${isActivePage(item) ? "is-active" : ""}`}
+                onClick={(event) => handleNavClick(event, item)}
+                className={`nav-link text-base text-left py-2 ${isActive(item) ? "is-active" : ""}`}
                 style={{ color: "#a3a3a3" }}
+                aria-current={isActive(item) ? "page" : undefined}
               >
                 {item.label}
               </a>

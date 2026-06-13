@@ -1,25 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import useOnceVisible from "../hooks/useOnceVisible";
+import SmartImage from "./SmartImage";
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const aboutRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [aboutRef, isVisible] = useOnceVisible({ threshold: 0.2 });
 
   return (
     <section
@@ -36,7 +20,7 @@ const About = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <img
+            <SmartImage
               src="/photos/dzikri-solo.jpg"
               alt="Dzikri Razzan Athallah - Software Engineer Portrait"
               title="Dzikri Razzan Athallah"
@@ -44,6 +28,18 @@ const About = () => {
               style={{ filter: "brightness(0.95)" }}
               loading="lazy"
               decoding="async"
+              fallback={
+                <div
+                  className="w-full flex items-center justify-center text-sm uppercase tracking-widest"
+                  style={{
+                    aspectRatio: "3 / 4",
+                    backgroundColor: "var(--bg-light)",
+                    color: "var(--text-muted)",
+                  }}
+                >
+                  Dzikri Razzan
+                </div>
+              }
             />
           </div>
 

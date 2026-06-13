@@ -3,7 +3,6 @@ export const certifications = [
     title: "Bangkit Academy 2024 - Mobile Development Path",
     issuer: "Bangkit Academy, led by Google, GoTo, and Traveloka",
     completedAt: "2024",
-    previewType: "pdf",
     note:
       "Bangkit helped me get more comfortable turning mobile ideas into something people can actually use. I learned a lot from the technical modules, but the biggest lesson was working through product decisions with a real team.",
     topics: ["Mobile Development", "Team Project", "Product Thinking"],

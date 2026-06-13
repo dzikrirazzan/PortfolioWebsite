@@ -19,6 +19,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dzikrirazzan.me/now</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dzikrirazzan.me/reading</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dzikrirazzan.me/projects/sigap-undip</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dzikrirazzan.me/projects/retensync</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dzikrirazzan.me/thoughts/what-bangkit-taught-me-about-learning</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>never</changefreq>

@@ -1,25 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import useOnceVisible from "../hooks/useOnceVisible";
 
 const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const contactRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (contactRef.current) {
-      observer.observe(contactRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [contactRef, isVisible] = useOnceVisible({ threshold: 0.2 });
 
   return (
     <section

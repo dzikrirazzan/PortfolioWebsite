@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SmartImage from "./SmartImage";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,7 +27,7 @@ const Hero = () => {
         <div className="h-full grid grid-cols-5 gap-1">
           {photos.map((photo, index) => (
             <div key={index} className="relative overflow-hidden">
-              <img
+              <SmartImage
                 src={photo.src}
                 alt={photo.alt}
                 title={photo.alt}
@@ -37,6 +38,13 @@ const Hero = () => {
                 }}
                 loading="lazy"
                 decoding="async"
+                fallback={
+                  <div
+                    className="w-full h-full"
+                    style={{ backgroundColor: "var(--bg-medium)" }}
+                    aria-hidden="true"
+                  />
+                }
               />
             </div>
           ))}

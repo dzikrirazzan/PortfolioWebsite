@@ -1,15 +1,25 @@
 import React, { memo } from "react";
+import SmartImage from "./SmartImage";
+
+const EmptyPreview = ({ title, issuer }) => (
+  <div className="certificate-preview-empty" role="img" aria-label={`${title} preview placeholder`}>
+    <span className="certificate-preview-label">Certificate preview</span>
+    <strong>{title}</strong>
+    <span>{issuer}</span>
+  </div>
+);
 
 const CertificationPreview = ({ certification }) => {
   const { title, issuer, previewSrc, previewType } = certification;
 
   if (previewSrc && previewType === "image") {
     return (
-      <img
+      <SmartImage
         src={previewSrc}
         alt={`${title} certificate preview`}
         loading="lazy"
         className="certificate-preview-image"
+        fallback={<EmptyPreview title={title} issuer={issuer} />}
       />
     );
   }
@@ -29,13 +39,7 @@ const CertificationPreview = ({ certification }) => {
     );
   }
 
-  return (
-    <div className="certificate-preview-empty" role="img" aria-label={`${title} preview placeholder`}>
-      <span className="certificate-preview-label">Certificate preview</span>
-      <strong>{title}</strong>
-      <span>{issuer}</span>
-    </div>
-  );
+  return <EmptyPreview title={title} issuer={issuer} />;
 };
 
 const CertificationItem = memo(({ certification }) => {

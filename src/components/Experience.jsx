@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import useOnceVisible from "../hooks/useOnceVisible";
 
 const Experience = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const experienceRef = useRef(null);
+  const [experienceRef, isVisible] = useOnceVisible({ threshold: 0.1 });
 
   const experiences = [
     {
@@ -24,29 +24,12 @@ const Experience = () => {
       description: "Redesigned official government website with Laravel backend.",
     },
     {
-      period: "2022 — Now",
+      period: "2022 — 2026",
       title: "Diponegoro University",
       role: "Computer Engineering Student",
       description: "GPA 3.7/4.0. Active in BEM FT and Himaskom organizations.",
     },
   ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (experienceRef.current) {
-      observer.observe(experienceRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
