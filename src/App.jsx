@@ -17,7 +17,7 @@ const getCurrentLocation = () => ({
 });
 
 function App() {
-  const [location, setLocation] = useState(getCurrentLocation);
+  const [location, setLocation] = useState(getCurrentLocation());
 
   const navigate = useCallback((pathname, hash = "") => {
     const target = `${pathname}${hash ? `#${hash}` : ""}`;

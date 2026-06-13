@@ -8,7 +8,9 @@ const Thoughts = ({ navigate }) => {
     document.title = "Thoughts | Dzikri Razzan Athallah";
   }, []);
 
-  const onNavigate = navigate || ((path) => window.history.pushState({}, "", path));
+  const onNavigate = navigate || (() => {
+    throw new Error("navigate prop is required for Thoughts component");
+  });
 
   return (
     <main className="page-shell">

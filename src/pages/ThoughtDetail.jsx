@@ -15,7 +15,7 @@ const ThoughtDetail = ({ slug, navigate }) => {
     document.title = thought
       ? `${thought.title} | Dzikri Razzan Athallah`
       : "Writing Not Found | Dzikri Razzan Athallah";
-  }, [thought]);
+  }, [slug]);
 
   if (!thought) {
     return (
