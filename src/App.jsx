@@ -125,12 +125,7 @@ function App() {
       >
         Skip to main content
       </a>
-      {bannerVisible && (
-        <OpenToWorkBanner
-          onDismiss={dismissBanner}
-          onTalk={() => navigate("/", "contact")}
-        />
-      )}
+      {bannerVisible && <OpenToWorkBanner onDismiss={dismissBanner} />}
       <Header currentPath={location.pathname} onNavigate={navigate} bannerOffset={bannerOffset} />
       <main id="main-content">
         {currentPage}
