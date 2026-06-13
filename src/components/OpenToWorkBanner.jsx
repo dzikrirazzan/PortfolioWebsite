@@ -12,7 +12,7 @@ const OpenToWorkBanner = ({ onDismiss }) => {
         <p className="open-to-work-text">
           Open to software engineering roles &amp; internships.{" "}
           <a
-            href="https://www.linkedin.com/in/dzikrirazzan"
+            href="https://www.linkedin.com/messaging/compose/?recipient=dzikrirazzan"
             target="_blank"
             rel="noopener noreferrer"
           >
