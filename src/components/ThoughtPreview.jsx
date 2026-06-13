@@ -1,13 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
+import formatDate from "../utils/formatDate";
 
-const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(date));
-
-const ThoughtPreview = ({ thought, onNavigate }) => {
+const ThoughtPreview = memo(({ thought, onNavigate }) => {
   const href = `/thoughts/${thought.slug}`;
 
   return (
@@ -47,6 +41,6 @@ const ThoughtPreview = ({ thought, onNavigate }) => {
       </a>
     </article>
   );
-};
+});
 
 export default ThoughtPreview;

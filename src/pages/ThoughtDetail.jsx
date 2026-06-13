@@ -1,21 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { thoughts } from "../data/thoughts";
-
-const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(date));
+import usePageTitle from "../hooks/usePageTitle";
+import formatDate from "../utils/formatDate";
 
 const ThoughtDetail = ({ slug, navigate }) => {
   const thought = thoughts.find((item) => item.slug === slug);
 
-  useEffect(() => {
-    document.title = thought
-      ? `${thought.title} | Dzikri Razzan Athallah`
-      : "Writing Not Found | Dzikri Razzan Athallah";
-  }, [slug]);
+  usePageTitle(thought ? thought.title : "Writing Not Found");
 
   if (!thought) {
     return (

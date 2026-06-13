@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import usePageTitle from "./hooks/usePageTitle";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -32,11 +33,10 @@ function App() {
     return () => window.removeEventListener("popstate", handleLocationChange);
   }, []);
 
-  useEffect(() => {
-    if (location.pathname === "/") {
-      document.title = "Dzikri Razzan Athallah - Software Engineer | dzikrirazzan.me";
-    }
+  const isHome = location.pathname === "/";
+  usePageTitle(isHome ? "Dzikri Razzan Athallah - Software Engineer | dzikrirazzan.me" : null, { raw: true });
 
+  useEffect(() => {
     if (location.hash) {
       window.requestAnimationFrame(() => {
         const section = document.getElementById(location.hash);

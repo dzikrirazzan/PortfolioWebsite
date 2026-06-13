@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const CertificationPreview = ({ certification }) => {
   const { title, issuer, previewSrc, previewType } = certification;
@@ -38,7 +38,7 @@ const CertificationPreview = ({ certification }) => {
   );
 };
 
-const CertificationItem = ({ certification }) => {
+const CertificationItem = memo(({ certification }) => {
   return (
     <article className="certification-item">
       <div className="certificate-media">
@@ -74,6 +74,6 @@ const CertificationItem = ({ certification }) => {
       </div>
     </article>
   );
-};
+});
 
 export default CertificationItem;

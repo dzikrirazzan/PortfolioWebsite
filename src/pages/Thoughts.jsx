@@ -1,35 +1,31 @@
-import React, { useEffect } from "react";
-import PageIntro from "../components/PageIntro";
+import React from "react";
 import ThoughtPreview from "../components/ThoughtPreview";
+import ListPage from "../components/ListPage";
+import usePageTitle from "../hooks/usePageTitle";
 import { thoughts } from "../data/thoughts";
 
 const Thoughts = ({ navigate }) => {
-  useEffect(() => {
-    document.title = "Thoughts | Dzikri Razzan Athallah";
-  }, []);
-
-  const onNavigate = navigate || (() => {
-    throw new Error("navigate prop is required for Thoughts component");
-  });
+  usePageTitle("Thoughts");
 
   return (
-    <main className="page-shell">
-      <PageIntro label="Thoughts" title="Writing things down while I learn">
+    <ListPage
+      label="Thoughts"
+      title="Writing things down while I learn"
+      intro={
         <p>
           Notes, reflections, and small essays from projects, campus life, and the parts of
           programming that I am still figuring out. This is meant to feel closer to a notebook than
           a formal blog.
         </p>
-      </PageIntro>
-
-      <section className="thoughts-section" aria-label="Writing list">
-        <div className="container thought-list">
-          {thoughts.map((thought) => (
-            <ThoughtPreview key={thought.slug} thought={thought} onNavigate={onNavigate} />
-          ))}
-        </div>
-      </section>
-    </main>
+      }
+      items={thoughts}
+      renderItem={(thought) => (
+        <ThoughtPreview key={thought.slug} thought={thought} onNavigate={navigate} />
+      )}
+      sectionClassName="thoughts-section"
+      sectionLabel="Writing list"
+      listClassName="thought-list"
+    />
   );
 };
 
