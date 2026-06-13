@@ -771,6 +771,34 @@ a:hover {
 }
 
 /* ---------------------------------------------------------------------------
+   Page entrance animation — subtle fade-up to match the home sections,
+   applied consistently across every routed page.
+--------------------------------------------------------------------------- */
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-intro,
+.article-container {
+  animation: pageReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* The content below the intro reveals a touch later for a gentle stagger. */
+.certifications-section,
+.thoughts-section,
+.now-section,
+.reading-section {
+  animation: pageReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+/* ---------------------------------------------------------------------------
    Reduced motion: honor the OS preference
 --------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
