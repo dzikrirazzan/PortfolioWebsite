@@ -1,40 +1,16 @@
 import React, { useState, useEffect } from "react";
-import useScrollSpy from "../hooks/useScrollSpy";
-import { scrollBehavior } from "../utils/motion";
 
 const NAV_ITEMS = [
-  { label: "About", type: "section", id: "about", href: "/#about" },
-  { label: "Projects", type: "section", id: "projects", href: "/#projects" },
-  { label: "Experience", type: "section", id: "experience", href: "/#experience" },
-  { label: "Certifications", type: "page", path: "/certifications", href: "/certifications" },
-  { label: "Thoughts", type: "page", path: "/thoughts", href: "/thoughts" },
-  { label: "Now", type: "page", path: "/now", href: "/now" },
-  { label: "Reading", type: "page", path: "/reading", href: "/reading" },
-  { label: "Contact", type: "section", id: "contact", href: "/#contact" },
+  { label: "Home", path: "/" },
+  { label: "Certifications", path: "/certifications" },
+  { label: "Thoughts", path: "/thoughts" },
+  { label: "Now", path: "/now" },
+  { label: "Reading", path: "/reading" },
 ];
-
-const SECTION_IDS = NAV_ITEMS.filter((item) => item.type === "section").map((item) => item.id);
 
 const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const isHome = currentPath === "/";
-  const activeSection = useScrollSpy(SECTION_IDS, { enabled: isHome });
-
-  const navigateToSection = (sectionId) => {
-    if (!isHome) {
-      onNavigate("/", sectionId);
-      setIsMenuOpen(false);
-      return;
-    }
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: scrollBehavior() });
-    }
-    setIsMenuOpen(false);
-  };
 
   const navigateToPage = (path) => {
     onNavigate(path);
@@ -51,22 +27,16 @@ const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
   }, []);
 
   const isActive = (item) => {
-    if (item.type === "page") {
-      return (
-        currentPath === item.path ||
-        (item.path === "/thoughts" && currentPath.startsWith("/thoughts/"))
-      );
+    if (item.path === "/") return currentPath === "/";
+    if (item.path === "/thoughts") {
+      return currentPath === "/thoughts" || currentPath.startsWith("/thoughts/");
     }
-    return isHome && activeSection === item.id;
+    return currentPath === item.path;
   };
 
   const handleNavClick = (event, item) => {
     event.preventDefault();
-    if (item.type === "page") {
-      navigateToPage(item.path);
-    } else {
-      navigateToSection(item.id);
-    }
+    navigateToPage(item.path);
   };
 
   return (
@@ -83,10 +53,10 @@ const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
       <nav className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center w-full">
         {/* Logo */}
         <a
-          href="/#hero"
-          onClick={(e) => {
-            e.preventDefault();
-            navigateToSection("hero");
+          href="/"
+          onClick={(event) => {
+            event.preventDefault();
+            navigateToPage("/");
           }}
           className="text-lg font-medium"
           style={{ color: "var(--text-white)" }}
@@ -95,11 +65,11 @@ const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
-              href={item.href}
+              href={item.path}
               onClick={(event) => handleNavClick(event, item)}
               className={`nav-link text-sm transition-opacity ${isActive(item) ? "is-active" : ""}`}
               style={{ color: "var(--text-gray)" }}
@@ -113,7 +83,7 @@ const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden text-sm font-medium"
+          className="md:hidden text-sm font-medium"
           style={{ color: "var(--text-white)" }}
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
@@ -125,7 +95,7 @@ const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
         <div
-          className="lg:hidden absolute top-full left-0 right-0 border-t"
+          className="md:hidden absolute top-full left-0 right-0 border-t"
           style={{
             backgroundColor: "#1a1a1a",
             borderColor: "#404040",
@@ -135,7 +105,7 @@ const Header = ({ currentPath = "/", onNavigate, bannerOffset = 0 }) => {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
-                href={item.href}
+                href={item.path}
                 onClick={(event) => handleNavClick(event, item)}
                 className={`nav-link text-base text-left py-2 ${isActive(item) ? "is-active" : ""}`}
                 style={{ color: "#a3a3a3" }}
