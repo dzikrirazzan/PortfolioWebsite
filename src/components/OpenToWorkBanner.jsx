@@ -4,14 +4,22 @@ import React from "react";
  * Dismissable top banner signalling availability to recruiters.
  * Visibility state lives in App so the fixed header can offset beneath it.
  */
-const OpenToWorkBanner = ({ onDismiss }) => {
+const OpenToWorkBanner = ({ onDismiss, onTalk }) => {
   return (
     <div className="open-to-work-banner" role="region" aria-label="Availability status">
       <div className="open-to-work-inner">
         <span className="open-to-work-dot" aria-hidden="true" />
         <p className="open-to-work-text">
           Open to software engineering roles &amp; internships.{" "}
-          <a href="mailto:dzikrirazzan02@gmail.com">Let&rsquo;s talk &rarr;</a>
+          <a
+            href="/#contact"
+            onClick={(event) => {
+              event.preventDefault();
+              onTalk();
+            }}
+          >
+            Let&rsquo;s talk &rarr;
+          </a>
         </p>
       </div>
       <button
