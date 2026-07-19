@@ -74,7 +74,7 @@ Use these settings when creating the Pages project:
 - Build output directory: `build`
 - Root directory: leave empty unless the repo is inside a subfolder
 
-This project uses client-side routes, so the repo includes a Cloudflare Pages fallback file at `public/_redirects`. It is copied into the production build and sends every route to `index.html`.
+This project uses client-side routes, and Cloudflare Pages already serves SPA routes by default as long as there is no top-level `404.html`. No custom `_redirects` file is needed here.
 
 If you add environment variables later, set them in the Cloudflare Pages dashboard under the project settings.
 
