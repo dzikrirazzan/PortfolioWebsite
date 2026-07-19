@@ -41,16 +41,19 @@ PortfolioWebsite
 To get a local copy up and running, follow these steps:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/yourusername/PortfolioWebsite.git
    ```
 
 2. **Navigate to the project directory**:
+
    ```bash
    cd PortfolioWebsite
    ```
 
 3. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -61,6 +64,19 @@ To get a local copy up and running, follow these steps:
    ```
 
 The application should now be running on `http://localhost:3000`.
+
+## Deploying To Cloudflare Pages
+
+Use these settings when creating the Pages project:
+
+- Framework preset: `Create React App`
+- Build command: `npm run build`
+- Build output directory: `build`
+- Root directory: leave empty unless the repo is inside a subfolder
+
+This project uses client-side routes, so the repo includes a Cloudflare Pages fallback file at `public/_redirects`. It is copied into the production build and sends every route to `index.html`.
+
+If you add environment variables later, set them in the Cloudflare Pages dashboard under the project settings.
 
 ## Built With
 
