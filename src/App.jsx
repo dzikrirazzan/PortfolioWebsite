@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import usePageTitle from "./hooks/usePageTitle";
 import { scrollBehavior } from "./utils/motion";
 import Header from "./components/Header";
-import OpenToWorkBanner from "./components/OpenToWorkBanner";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
@@ -17,39 +16,18 @@ import Now from "./pages/Now";
 import Reading from "./pages/Reading";
 import "./App.css";
 
-const BANNER_DISMISSED_KEY = "otw-banner-dismissed";
-const BANNER_HEIGHT = 40;
-
 const getCurrentLocation = () => ({
   pathname: window.location.pathname,
   hash: window.location.hash.replace("#", ""),
 });
 
-const readBannerDismissed = () => {
-  try {
-    return window.localStorage.getItem(BANNER_DISMISSED_KEY) === "true";
-  } catch (error) {
-    return false;
-  }
-};
-
 function App() {
   const [location, setLocation] = useState(getCurrentLocation());
-  const [bannerVisible, setBannerVisible] = useState(() => !readBannerDismissed());
 
   const navigate = useCallback((pathname, hash = "") => {
     const target = `${pathname}${hash ? `#${hash}` : ""}`;
     window.history.pushState({}, "", target);
     setLocation({ pathname, hash });
-  }, []);
-
-  const dismissBanner = useCallback(() => {
-    setBannerVisible(false);
-    try {
-      window.localStorage.setItem(BANNER_DISMISSED_KEY, "true");
-    } catch (error) {
-      /* ignore storage failures (private mode, etc.) */
-    }
   }, []);
 
   useEffect(() => {
@@ -114,10 +92,8 @@ function App() {
     );
   }, [location.pathname, navigate]);
 
-  const bannerOffset = bannerVisible ? BANNER_HEIGHT : 0;
-
   return (
-    <div className={`App ${bannerVisible ? "has-banner" : ""}`}>
+    <div className="App">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only"
@@ -125,8 +101,7 @@ function App() {
       >
         Skip to main content
       </a>
-      {bannerVisible && <OpenToWorkBanner onDismiss={dismissBanner} />}
-      <Header currentPath={location.pathname} onNavigate={navigate} bannerOffset={bannerOffset} />
+      <Header currentPath={location.pathname} onNavigate={navigate} bannerOffset={0} />
       <main id="main-content">
         {currentPage}
       </main>
